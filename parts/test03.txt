@@ -1,0 +1,74 @@
+h3>Modo Estudio</h3>
+        <p>Ves la respuesta correcta inmediatamente al seleccionar.</p>
+      </div>
+      <div class="mode-card" data-mode="exam" onclick="selectMode('exam', this)">
+        <div class="mode-icon">📝</div>
+        <h3>Modo Examen</h3>
+        <p>Terminas el bloque entero y luego ves los resultados.</p>
+      </div>
+    </div>
+
+    <div class="count-row">
+      <div class="count-badge selected" data-n="20" onclick="selectCount(20, this)">20 preguntas</div>
+      <div class="count-badge" data-n="50" onclick="selectCount(50, this)">50 preguntas</div>
+      <div class="count-badge" data-n="75" onclick="selectCount(75, this)">75 preguntas</div>
+      <div class="count-badge" data-n="145" onclick="selectCount(145, this)">Todas (145)</div>
+    </div>
+
+    <button class="btn" onclick="startQuiz()">▶ Empezar</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="screen-quiz" class="screen">
+  <div class="header">
+    <h1>38MSEC · <span>Parte específica</span></h1>
+    <div class="header-right">
+      <div class="score-badge">
+        ✅ <span class="correct-count" id="hdr-correct">0</span>
+        &nbsp;❌ <span class="wrong-count" id="hdr-wrong">0</span>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="endQuiz()">Terminar</button>
+    </div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="progress-label">
+      <span id="prog-label">Pregunta 1 de 20</span>
+      <span id="prog-pct">0%</span>
+    </div>
+  </div>
+  <div class="quiz-wrap">
+    <div class="q-number" id="q-number"></div>
+    <div class="q-text" id="q-text"></div>
+    <div class="options" id="q-options"></div>
+    <div class="feedback-box" id="feedback-box"></div>
+  </div>
+  <div class="bottom-nav">
+    <button class="btn btn-outline btn-sm" onclick="skipQuestion()" id="btn-skip">Saltar ⏭</button>
+    <span class="q-counter" id="q-counter">1 / 20</span>
+    <button class="btn btn-sm" onclick="nextQuestion()" id="btn-next" style="display:none">Siguiente →</button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="screen-results" class="screen">
+  <div class="results">
+    <div class="big-score" id="res-pct">—</div>
+    <div class="result-label" id="res-msg">Resultados</div>
+    <div class="result-grid">
+      <div class="result-card ok"><div class="val" id="res-correct">0</div><div class="lbl">Correctas</div></div>
+      <div class="result-card ko"><div class="val" id="res-wrong">0</div><div class="lbl">Incorrectas</div></div>
+      <div class="result-card sk"><div class="val" id="res-skipped">0</div><div class="lbl">Saltadas</div></div>
+      <div class="result-card sk"><div class="val" id="res-conflict">0</div><div class="lbl">En conflicto</div></div>
+    </div>
+    <div class="btn-row" style="margin-bottom:24px">
+      <button class="btn" onclick="restartQuiz()">🔄 Repetir</button>
+      <button class="btn btn-outline" onclick="goHome()">🏠 Inicio</button>
+    </div>
+    <div class="review-list" id="review-list"></div>
+  </div>
+</div>
+
+<script>
+const ALL_QUESTIONS = [{"id":"Q001","q":"¿Qué elemento curricular hace referencia a qué es lo que debe lograr el alumnado al finaliza el MP?","options":[{"letter":"A","text":"RA"},{"letter":"B","text":"objetivo general"},{"letter":"C","text":"contenido"},{"letter":"D","text":"competencia personal, profesional y social"}],"correct":"A","status":"ok","sources":["Google Sheet · ESPECÍFICA FOL","1. RA.png"]},{"id":"Q002","q":"¿Cuál es el documento normativo que establece las EEMM de un ciclo formativo para programar?","options":[{"letter":"A","text":"Una orden autonomica"},{"letter":"B","text":"El RDdel título"},{"letter":"C","text":"El RD estatal"},{"letter":"D","text":"La PDA"}],"correct":"B","status":"ok","sources":["Google Sheet · ESPECÍFICA FOL","2. RD título.png","3. RD título.png"]},{"id":"Q003","q":"¿Qué diferencia hay entre programación didáctica y programación de aula?","options":[{"letter":"A","t
